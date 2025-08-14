@@ -8,7 +8,7 @@ const Header = () => {
         sentence="Spot On"
         manualMode={false}
         blurAmount={5}
-        borderColor="red"
+        borderColor="#6A0DAD"
         animationDuration={2}
         pauseBetweenAnimations={1}
       />
