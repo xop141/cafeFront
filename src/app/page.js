@@ -15,7 +15,7 @@ export default function Home() {
   };
 
   return (
-    <div className="relative w-screen h-screen bg-[#05000C] text-[#F0E6FF]">
+    <div className="relative w-screen h-screen ">
       <div className="absolute inset-0 z-0">
         <Orb
           hoverIntensity={0.5}
@@ -25,16 +25,15 @@ export default function Home() {
         />
       </div>
       <div className="absolute inset-0 flex items-center justify-center flex-col gap-[100px] z-10">
-        <div className="flex h-fit gap-[10px] rounded-full py-2 shadow-sm px-4 border border-white/50">
+        <div className="flex h-fit gap-[10px] rounded-full py-2 shadow-sm px-4 border border-white/50 absolute top-[50px]">
           <Search />
           <input
-            className="bg-transparent text-white focus:outline-none focus:ring-0 focus:border-0"
+            className="bg-transparent focus:outline-none focus:ring-0 focus:border-0 text-[#7A6FA0]"
             placeholder="Search"
             value={type}
             onChange={handleChange}
           />
         </div>
-
         <Header />
       </div>
     </div>

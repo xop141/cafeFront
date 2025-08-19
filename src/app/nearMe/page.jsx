@@ -1,45 +1,31 @@
-"use client"
-import React, { useEffect } from 'react'
-import { Loader } from '@googlemaps/js-api-loader'
-import dotenv from 'dotenv'
+"use client";
+import React, { useEffect, useState } from "react";
 
 const Page = () => {
-
-  
-  const apiKey = process.env.NEXT_PUBLIC_MAP
-  console.log(apiKey);
-  
-
-  useEffect(() => {
-    const initMap = async () => {
-      if (!apiKey) {
-        console.error("Google Maps API key is missing!")
-        return
-      }
-
-      const loader = new Loader({
-        apiKey,
-        version: "quarterly",
-        libraries: ["places"],
-      })
-
-      const google = await loader.load()
-
-  
-      const map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: 40.7128, lng: -74.0060 },
-        zoom: 12,
-      })
-    }
-
-    initMap()
-  }, [apiKey])
-
+  const [form, setForm] = useState({
+    name: "",
+    password: "",
+    email: "",
+  });
+  const handleType = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    
+  };
+  const submit = () => {
+      console.log(form);
+    };
   return (
     <div className="w-full h-screen">
-      <div id="map" className="w-full h-full"></div>
+      <input placeholder="name" name="name" onChange={handleType} />
+      <input placeholder="password" name="password" onChange={handleType} />
+      <input placeholder="email" name="email" onChange={handleType} />
+      <button onClick={submit}>submit</button>
     </div>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;
