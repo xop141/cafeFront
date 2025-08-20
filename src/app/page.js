@@ -17,7 +17,8 @@ export default function Home() {
 
     // Debounce both search and isTyping update
     debounceRef.current = setTimeout(async () => {
-      setIsTyping(value.length > 0); // update isTyping only after debounce
+      // Update isTyping after user pauses typing
+      setIsTyping(value.length > 0);
 
       if (value.trim() === "") return;
 
