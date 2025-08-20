@@ -6,25 +6,26 @@ import { useState, useRef } from "react";
 import axios from "axios";
 
 export default function Home() {
-
   const [isTyping, setIsTyping] = useState(false);
   const debounceRef = useRef(null);
 
   const handleChange = (e) => {
     const value = e.target.value;
-   
-    setIsTyping(value.length > 0);
 
+    // Clear previous debounce
     if (debounceRef.current) clearTimeout(debounceRef.current);
 
+    // Debounce both search and isTyping update
     debounceRef.current = setTimeout(async () => {
+      setIsTyping(value.length > 0); // update isTyping only after debounce
+
       if (value.trim() === "") return;
 
       try {
         const response = await axios.post("http://localhost:9000/cafe/search", {
           searchValue: value,
         });
-        console.log(response.data); 
+        console.log(response.data);
       } catch (err) {
         console.error("Search request error:", err);
       }
@@ -33,6 +34,7 @@ export default function Home() {
 
   return (
     <div className="relative w-screen h-screen">
+      {/* Background Orb */}
       <div className="absolute inset-0 z-0">
         <Orb
           hoverIntensity={0.5}
@@ -41,7 +43,10 @@ export default function Home() {
           forceHoverState={isTyping}
         />
       </div>
+
+      {/* Foreground content */}
       <div className="absolute inset-0 flex items-center justify-center flex-col gap-[100px] z-10">
+        {/* Search bar */}
         <div
           className="flex h-fit gap-[10px] rounded-full py-2 shadow-sm px-4 border border-white/50 absolute top-[50px] animate-bounce-slow"
         >
@@ -53,6 +58,7 @@ export default function Home() {
           />
         </div>
 
+        {/* Header */}
         <Header />
       </div>
     </div>
