@@ -1,9 +1,9 @@
 import React from 'react'
-
+import CafeCard from '@/components/layout/CafeCard'
 const page = () => {
   return (
     <div>
-  
+  <CafeCard/>
     </div>
   )
 }

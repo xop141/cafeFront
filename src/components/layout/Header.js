@@ -23,14 +23,14 @@ const Header = () => {
       <div className="flex justify-between">
         <Button
           variant="secondary"
-          className="bg-transparent border border-white/50 text-[#F0E6FF] hover:bg-[#7C3AED]"
+          className="bg-transparent border border-[#555073] text-[#F0E6FF] hover:bg-[#7C3AED]"
           onClick={() => explore()}
         >
           EXPLORE
         </Button>
         <Button
           variant="secondary"
-          className="bg-[#8B5CF6] hover:bg-[#7C3AED] border border-white/50 text-[#F0E6FF]"
+          className="bg-transparent hover:bg-[#7C3AED] border border-[#555073] text-[#F0E6FF]"
           onClick={() => near()}
         >
           Near Me
